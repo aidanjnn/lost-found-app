@@ -1,0 +1,572 @@
+/**
+ * Staff Claim Card Component Styles
+ * Sprint 3: Staff Claiming Management UI (Front-End)
+ */
+
+.staff-claim-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.staff-claim-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.staff-claim-card.expanded {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Card Header */
+.claim-card-header {
+  padding: 1.5rem;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.claim-card-header:hover {
+  background-color: #e9ecef;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+}
+
+.id-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.claim-id {
+  font-weight: 700;
+  color: #000000;
+  font-size: 1.125rem;
+}
+
+.item-id-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15rem 0.65rem;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #4a4a4a;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.status-icon {
+  font-size: 1rem;
+}
+
+.status-pending {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.status-approved {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.status-rejected {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.status-picked-up {
+  background-color: #cce5ff;
+  color: #705318;
+}
+
+.status-unknown {
+  background-color: #e2e3e5;
+  color: #383d41;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-info {
+  text-align: right;
+}
+
+.item-category {
+  font-weight: 600;
+  color: #333;
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.claim-date {
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.expand-button {
+  background: none;
+  border: none;
+  color: #000000;
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: transform 0.3s;
+}
+
+.staff-claim-card.expanded .expand-button {
+  transform: rotate(90deg);
+}
+
+/* Card Body */
+.claim-card-body {
+  padding: 1.5rem;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Info Sections */
+.info-section {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #eee;
+}
+
+.info-section:last-of-type {
+  border-bottom: none;
+  margin-bottom: 1rem;
+}
+
+.info-section h4 {
+  color: #000000;
+  font-size: 1rem;
+  margin: 0 0 1rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.info-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.info-row .label {
+  color: #666;
+  font-weight: 600;
+  flex: 0 0 150px;
+}
+
+.info-row .value {
+  color: #333;
+  font-weight: 500;
+  flex: 1;
+  text-align: right;
+}
+
+.info-row .value.highlight {
+  color: #000000;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+/* Verification Box */
+.verification-box {
+  background-color: #f8f9fa;
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 4px solid #000000;
+  color: #555;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* Staff Notes */
+.notes-input-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.notes-textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  resize: vertical;
+  transition: border-color 0.2s;
+}
+
+.notes-textarea:focus {
+  outline: none;
+  border-color: #000000;
+}
+
+.notes-textarea:disabled {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}
+
+.btn-cancel-notes {
+  align-self: flex-end;
+  padding: 0.5rem 1rem;
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-cancel-notes:hover {
+  background-color: #5a6268;
+}
+
+.notes-display-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.notes-box {
+  background-color: #f1f9f4;
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 4px solid #28a745;
+  color: #555;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.btn-edit-notes {
+  align-self: flex-end;
+  padding: 0.5rem 1rem;
+  background-color: #000000;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-edit-notes:hover {
+  background-color: #1a1a1a;
+  transform: translateY(-1px);
+}
+
+/* Timestamps */
+.claim-timestamps {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-top: 1rem;
+  margin-bottom: 1rem;
+  border-top: 1px solid #eee;
+}
+
+.claim-timestamps small {
+  color: #888;
+  font-size: 0.875rem;
+}
+
+/* Error Message */
+.error-message {
+  padding: 1rem;
+  background-color: #f8d7da;
+  color: #721c24;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  border: 1px solid #f5c6cb;
+  font-size: 0.95rem;
+}
+
+/* Action Buttons */
+.action-area {
+  position: relative;
+  z-index: 1;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-top: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.action-buttons.confirm-mode {
+  justify-content: center;
+}
+
+.btn-action {
+  flex: 1;
+  min-width: 210px;
+  padding: 0.875rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  position: relative;
+  z-index: 2;
+  pointer-events: auto;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.btn-action:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.btn-action:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.btn-action:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn-approve {
+  background: linear-gradient(135deg, #fde68a 0%, #fbbf24 100%);
+  color: #3b2504;
+  border: 1px solid rgba(251, 191, 36, 0.7);
+}
+
+.btn-approve:hover:not(:disabled) {
+  background: linear-gradient(135deg, #fcd34d 0%, #f59e0b 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(245, 158, 11, 0.35);
+}
+
+.btn-reject {
+  background: linear-gradient(135deg, #fecdd3 0%, #f87171 100%);
+  color: #7f1d1d;
+  border: 1px solid rgba(248, 113, 113, 0.6);
+}
+
+.btn-reject:hover:not(:disabled) {
+  background: linear-gradient(135deg, #fda4af 0%, #ef4444 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(239, 68, 68, 0.35);
+}
+
+.btn-picked-up {
+  background: linear-gradient(135deg, #d1fae5 0%, #34d399 100%);
+  color: #064e3b;
+  border: 1px solid rgba(52, 211, 153, 0.6);
+}
+
+.btn-picked-up:hover:not(:disabled) {
+  background: linear-gradient(135deg, #a7f3d0 0%, #10b981 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(16, 185, 129, 0.35);
+}
+
+.inline-confirm-card {
+  width: 100%;
+  background: #fffdf7;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  animation: scaleIn 0.3s ease;
+}
+
+.inline-confirm-card.confirm-approved {
+  border-color: rgba(251, 191, 36, 0.6);
+  background: linear-gradient(135deg, rgba(253, 230, 138, 0.35), rgba(251, 191, 36, 0.1));
+}
+
+.inline-confirm-card.confirm-rejected {
+  border-color: rgba(248, 113, 113, 0.5);
+  background: linear-gradient(135deg, rgba(254, 205, 211, 0.4), rgba(248, 113, 113, 0.12));
+}
+
+.inline-confirm-card.confirm-picked_up {
+  border-color: rgba(34, 197, 94, 0.4);
+  background: linear-gradient(135deg, rgba(167, 243, 208, 0.35), rgba(14, 165, 233, 0.12));
+}
+
+.confirm-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.confirm-label {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.confirm-message {
+  margin: 0;
+  color: #4b5563;
+  font-size: 0.95rem;
+}
+
+.inline-confirm-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.btn-inline-confirm {
+  flex: 1;
+  min-width: 140px;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-inline-confirm.confirm-yes {
+  background: linear-gradient(135deg, #fde68a 0%, #f59e0b 100%);
+  color: #3b2504;
+  box-shadow: 0 6px 15px rgba(245, 158, 11, 0.35);
+}
+
+.btn-inline-confirm.confirm-no {
+  background: #f1f5f9;
+  color: #1f2937;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+}
+
+.btn-inline-confirm:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.btn-inline-confirm:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Finalized Message */
+.finalized-message {
+  padding: 1rem;
+  background-color: #d4edda;
+  color: #155724;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 600;
+  border: 2px solid #c3e6cb;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .claim-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .header-left {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .header-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .header-info {
+    text-align: left;
+  }
+
+  .info-row {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .info-row .label,
+  .info-row .value {
+    text-align: left;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .btn-action {
+    width: 100%;
+    min-width: 100%;
+  }
+
+  .claim-card-body {
+    padding: 1rem;
+  }
+}
+
+

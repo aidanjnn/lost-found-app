@@ -1,0 +1,37 @@
+/* 
+ * ConfirmDialog.css - Minimal styles
+ * Most styling is inline in the component for maximum reliability
+ */
+
+.confirm-dialog-overlay {
+  /* Base styles - inline styles in component handle most of this */
+  pointer-events: auto !important;
+}
+
+.confirm-dialog-box {
+  /* Base styles - inline styles in component handle most of this */
+  pointer-events: auto !important;
+}
+
+/* Ensure buttons are always clickable */
+.confirm-dialog-box button {
+  pointer-events: auto !important;
+  user-select: none;
+}
+
+/* Prevent any interference */
+.confirm-dialog-overlay * {
+  box-sizing: border-box;
+}
+
+/* Smooth slide-in animation */
+@keyframes slideInCenter {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

@@ -1,0 +1,398 @@
+/**
+ * Premium Form Styling - Professional UI/UX
+ * Sprint 4: Issue #46 - $1M/year Designer Quality
+ * 
+ * Consistent, beautiful, reactive form elements
+ * across the entire application
+ */
+
+/* ==================== 
+   PREMIUM INPUT FIELDS
+   ==================== */
+
+.premium-input,
+input[type="text"].premium,
+input[type="email"].premium,
+input[type="password"].premium,
+input[type="url"].premium,
+input[type="datetime-local"].premium,
+textarea.premium,
+select.premium {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  border: 2px solid #e9ecef;
+  border-radius: 14px;
+  font-size: 1rem;
+  font-family: inherit;
+  font-weight: 500;
+  background: #f8f9fa;
+  color: #000000;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Floating Label Effect */
+.form-group-premium {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.form-group-premium label {
+  position: absolute;
+  left: 1.25rem;
+  top: 1rem;
+  color: #999;
+  font-size: 1rem;
+  font-weight: 500;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: transparent;
+  padding: 0 0.5rem;
+}
+
+.form-group-premium input:focus + label,
+.form-group-premium input:not(:placeholder-shown) + label,
+.form-group-premium textarea:focus + label,
+.form-group-premium textarea:not(:placeholder-shown) + label {
+  top: -0.75rem;
+  left: 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #C7A842;
+  background: white;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Input Hover State */
+.premium-input:hover,
+input.premium:hover,
+textarea.premium:hover,
+select.premium:hover {
+  border-color: #C7A842;
+  background: white;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(199, 168, 66, 0.12);
+  cursor: text;
+}
+
+/* Input Focus State */
+.premium-input:focus,
+input.premium:focus,
+textarea.premium:focus,
+select.premium:focus {
+  outline: none;
+  border-color: #C7A842;
+  background: white;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(199, 168, 66, 0.2),
+              0 0 0 4px rgba(232, 208, 102, 0.1);
+  animation: inputFocusPulse 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: text;
+}
+
+@keyframes inputFocusPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(199, 168, 66, 0.5);
+  }
+  50% {
+    box-shadow: 0 12px 30px rgba(199, 168, 66, 0.3),
+                0 0 0 8px rgba(232, 208, 102, 0.15);
+  }
+  100% {
+    box-shadow: 0 12px 30px rgba(199, 168, 66, 0.2),
+                0 0 0 4px rgba(232, 208, 102, 0.1);
+  }
+}
+
+/* Input Disabled State */
+.premium-input:disabled,
+input.premium:disabled,
+textarea.premium:disabled,
+select.premium:disabled {
+  background-color: #f5f5f5;
+  cursor: not-allowed !important;
+  opacity: 0.6;
+  transform: none;
+  border-color: #dee2e6;
+}
+
+/* ==================== 
+   PREMIUM BUTTONS
+   ==================== */
+
+.premium-button,
+button.premium,
+.btn-premium {
+  padding: 1.125rem 2rem;
+  background: linear-gradient(135deg, #C7A842 0%, #705318 100%);
+  color: white;
+  border: none;
+  border-radius: 14px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(199, 168, 66, 0.35);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Button Ripple Effect */
+.premium-button::before,
+button.premium::before,
+.btn-premium::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.premium-button:hover::before,
+button.premium:hover::before,
+.btn-premium:hover::before {
+  width: 400px;
+  height: 400px;
+}
+
+/* Button Hover State */
+.premium-button:hover:not(:disabled),
+button.premium:hover:not(:disabled),
+.btn-premium:hover:not(:disabled) {
+  background: linear-gradient(135deg, #E8D066 0%, #C7A842 100%);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(232, 208, 102, 0.5);
+  cursor: pointer;
+}
+
+/* Button Active State */
+.premium-button:active:not(:disabled),
+button.premium:active:not(:disabled),
+.btn-premium:active:not(:disabled) {
+  transform: translateY(-1px) scale(0.98);
+  transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Button Disabled State */
+.premium-button:disabled,
+button.premium:disabled,
+.btn-premium:disabled {
+  background: linear-gradient(135deg, #ccc 0%, #999 100%);
+  cursor: not-allowed !important;
+  opacity: 0.5;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ==================== 
+   PREMIUM SELECT DROPDOWNS
+   ==================== */
+
+select.premium {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23C7A842' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 3rem;
+  cursor: pointer;
+}
+
+select.premium:hover {
+  cursor: pointer;
+}
+
+/* ==================== 
+   PREMIUM TEXTAREA
+   ==================== */
+
+textarea.premium {
+  min-height: 120px;
+  resize: vertical;
+  font-family: inherit;
+  line-height: 1.6;
+}
+
+/* ==================== 
+   FORM VALIDATION STATES
+   ==================== */
+
+.premium-input.error,
+input.premium.error,
+textarea.premium.error,
+select.premium.error {
+  border-color: #dc3545;
+  background: #fff5f5;
+}
+
+.premium-input.error:focus,
+input.premium.error:focus,
+textarea.premium.error:focus,
+select.premium.error:focus {
+  box-shadow: 0 12px 30px rgba(220, 53, 69, 0.2),
+              0 0 0 4px rgba(220, 53, 69, 0.1);
+}
+
+.premium-input.success,
+input.premium.success,
+textarea.premium.success,
+select.premium.success {
+  border-color: #28a745;
+  background: #f0fff4;
+}
+
+/* Error Message */
+.error-text {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #dc3545;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  animation: slideInDown 0.3s ease;
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Success Message */
+.success-text {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #28a745;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  animation: slideInDown 0.3s ease;
+}
+
+/* ==================== 
+   FORM CONTAINER PREMIUM
+   ==================== */
+
+.form-container-premium {
+  background: white;
+  padding: 3.5rem;
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08),
+              0 8px 25px rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+  animation: slideInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-container-premium::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, #E8D066 0%, #C7A842 50%, #705318 100%);
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==================== 
+   LOADING SPINNER (Premium)
+   ==================== */
+
+.premium-spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==================== 
+   MICRO-INTERACTIONS
+   ==================== */
+
+/* Checkbox Premium */
+input[type="checkbox"].premium {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  cursor: pointer;
+  accent-color: #C7A842;
+}
+
+input[type="checkbox"].premium:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(199, 168, 66, 0.3);
+}
+
+/* Radio Button Premium */
+input[type="radio"].premium {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: #C7A842;
+}
+
+input[type="radio"].premium:hover {
+  transform: scale(1.1);
+}
+
+/* ==================== 
+   RESPONSIVE
+   ==================== */
+
+@media (max-width: 768px) {
+  .form-container-premium {
+    padding: 2.5rem 2rem;
+    border-radius: 20px;
+  }
+
+  .premium-button,
+  button.premium,
+  .btn-premium {
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .premium-input,
+  input.premium,
+  textarea.premium,
+  select.premium {
+    padding: 0.875rem 1rem;
+  }
+}
+
+

@@ -1,0 +1,220 @@
+/**
+ * Student Dashboard Page Styles
+ * Sprint 3: Search and Filtering UI
+ */
+
+.student-dashboard-page {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.dashboard-header {
+  margin-bottom: 2rem;
+}
+
+.dashboard-header h1 {
+  color: #000000;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.welcome-message {
+  font-size: 1.1rem;
+  color: #666;
+  margin: 0;
+}
+
+.items-header {
+  margin-bottom: 1.5rem;
+}
+
+.items-header h2 {
+  color: #000000;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.items-note {
+  color: #888;
+  font-size: 0.9rem;
+  font-style: italic;
+  margin: 0;
+}
+
+.items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+  opacity: 1;
+  visibility: visible;
+  animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Stagger animation for grid items */
+.items-grid > * {
+  animation: staggerFadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  opacity: 1; /* Ensure items are always visible */
+}
+
+.items-grid > *:nth-child(1) { animation-delay: 0.05s; }
+.items-grid > *:nth-child(2) { animation-delay: 0.1s; }
+.items-grid > *:nth-child(3) { animation-delay: 0.15s; }
+.items-grid > *:nth-child(4) { animation-delay: 0.2s; }
+.items-grid > *:nth-child(5) { animation-delay: 0.25s; }
+.items-grid > *:nth-child(6) { animation-delay: 0.3s; }
+.items-grid > *:nth-child(7) { animation-delay: 0.35s; }
+.items-grid > *:nth-child(8) { animation-delay: 0.4s; }
+.items-grid > *:nth-child(n+9) { animation-delay: 0.45s; }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes staggerFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Loading State */
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #000000;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-state p {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+/* Error State */
+.error-state {
+  padding: 2rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.error-message {
+  color: #d32f2f;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.retry-button {
+  padding: 0.75rem 2rem;
+  background-color: #000000;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.retry-button:hover {
+  background-color: #705318;
+}
+
+/* Empty State */
+.empty-state {
+  padding: 4rem 2rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.empty-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.empty-state h2 {
+  color: #000000;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+  color: #666;
+  font-size: 1rem;
+}
+
+/* Results Summary */
+.results-summary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background: white;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.results-text {
+  color: #666;
+  font-size: 1rem;
+}
+
+.results-text strong {
+  color: #000000;
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+
+@media (max-width: 768px) {
+  .student-dashboard-page {
+    padding: 1rem;
+  }
+
+  .dashboard-header h1 {
+    font-size: 2rem;
+  }
+
+  .items-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
