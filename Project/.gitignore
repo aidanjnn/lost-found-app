@@ -1,0 +1,62 @@
+flask_session/
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+lostfound.db
+test_lostfound.db
+
+# Environment variables
+.env
+.env.local
+
+# Flask
+instance/
+.webassets-cache
+flask_session/
+src/flask_session/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+*.cover
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+
+# Logs
+*.log
+
+# Dependency markers
+.deps_installed
+
+# Vite cache
+.vite/
+

@@ -1,0 +1,331 @@
+/**
+ * Navigation Component Styles - Professional UI Overhaul
+ * Sprint 4: Issue #46 - UWaterloo Branded Navigation
+ */
+
+/* Navigation Container */
+.navigation {
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
+  box-shadow: 0 4px 20px rgba(199, 168, 66, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 4px solid transparent;
+  border-image: linear-gradient(90deg, #E8D066 0%, #C7A842 50%, #705318 100%) 1;
+  animation: slideDown 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.nav-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 85px;
+}
+
+/* Brand/Logo Section */
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-brand-logo {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-brand-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #E8D066 0%, #C7A842 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 0.5px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-brand:hover .nav-brand-logo {
+  transform: scale(1.05) rotate(-2deg);
+}
+
+.nav-brand:hover .nav-brand-text {
+  background: linear-gradient(135deg, #C7A842 0%, #705318 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transform: translateX(3px);
+}
+
+/* Desktop Navigation Links */
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.nav-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.3px;
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #E8D066 0%, #C7A842 50%, #705318 100%);
+  transform: translateX(-50%);
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 2px 2px 0 0;
+}
+
+.nav-link:hover {
+  background: rgba(232, 208, 102, 0.15);
+  color: #FDB515;
+  transform: translateY(-2px);
+  box-shadow: none;
+}
+
+.nav-link:hover::before {
+  width: 100%;
+}
+
+.nav-link.active {
+  background: rgba(232, 208, 102, 0.2);
+  color: #FDB515;
+  font-weight: 700;
+}
+
+.nav-link.active::before {
+  width: 100%;
+}
+
+/* Logout Button */
+.logout-btn {
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 1rem;
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+  letter-spacing: 0.5px;
+  border: 2px solid transparent;
+  font-family: inherit;
+}
+
+.logout-btn:hover {
+  background: linear-gradient(135deg, #c82333 0%, #bd2130 100%);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 6px 20px rgba(220, 53, 69, 0.5);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.logout-btn:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+/* Mobile Menu Button */
+.mobile-menu-btn {
+  display: none;
+  flex-direction: column;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  gap: 5px;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-btn span {
+  width: 28px;
+  height: 3px;
+  background: linear-gradient(90deg, #E8D066 0%, #C7A842 100%);
+  border-radius: 3px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 4px rgba(199, 168, 66, 0.3);
+}
+
+.mobile-menu-btn:hover span {
+  background: linear-gradient(90deg, #C7A842 0%, #705318 100%);
+  box-shadow: 0 2px 8px rgba(199, 168, 66, 0.5);
+}
+
+.mobile-menu-btn span.active:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 8px);
+}
+
+.mobile-menu-btn span.active:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-btn span.active:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Mobile Navigation */
+.mobile-nav-links {
+  display: none;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background: linear-gradient(180deg, #000000 0%, #1a1a1a 100%);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-nav-links.open {
+  display: flex;
+  max-height: 1000px;
+  animation: slideInMobile 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideInMobile {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mobile-nav-links li {
+  border-bottom: 1px solid rgba(232, 208, 102, 0.1);
+  animation: fadeInStagger 0.3s ease-out backwards;
+}
+
+.mobile-nav-links li:nth-child(1) { animation-delay: 0.05s; }
+.mobile-nav-links li:nth-child(2) { animation-delay: 0.1s; }
+.mobile-nav-links li:nth-child(3) { animation-delay: 0.15s; }
+.mobile-nav-links li:nth-child(4) { animation-delay: 0.2s; }
+.mobile-nav-links li:nth-child(5) { animation-delay: 0.25s; }
+
+@keyframes fadeInStagger {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.mobile-nav-links .nav-link,
+.mobile-nav-links .logout-btn {
+  display: block;
+  width: 100%;
+  color: white;
+  text-decoration: none;
+  padding: 1.25rem 2rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border-radius: 0;
+  text-align: left;
+}
+
+.mobile-nav-links .nav-link:hover,
+.mobile-nav-links .nav-link.active,
+.mobile-nav-links .logout-btn:hover {
+  background: rgba(232, 208, 102, 0.2);
+  padding-left: 2.5rem;
+  border-left: 4px solid #C7A842;
+}
+
+/* Focus States for Accessibility */
+.nav-link:focus-visible,
+.logout-btn:focus-visible,
+.mobile-menu-btn:focus-visible {
+  outline: 3px solid #C7A842;
+  outline-offset: 4px;
+  box-shadow: 0 0 0 6px rgba(232, 208, 102, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .nav-links {
+    gap: 0.25rem;
+  }
+  
+  .nav-link {
+    padding: 0.65rem 1rem;
+    font-size: 0.95rem;
+  }
+  
+  .logout-btn {
+    padding: 0.65rem 1.5rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .mobile-menu-btn {
+    display: flex;
+  }
+
+  .nav-container {
+    padding: 0 1rem;
+    min-height: 70px;
+  }
+
+  .nav-brand-logo {
+    height: 40px;
+  }
+
+  .nav-brand-text {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-brand-text {
+    font-size: 1.1rem;
+  }
+
+  .nav-brand-logo {
+    height: 35px;
+  }
+}

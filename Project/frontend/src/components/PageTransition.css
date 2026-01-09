@@ -1,0 +1,54 @@
+/**
+ * Page Transition Styles
+ * Smooth, professional transitions between pages
+ */
+
+.page-transition {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform, opacity;
+}
+
+.page-transition.page-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger children animations */
+.page-transition.page-visible > * {
+  animation: elementFadeIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  opacity: 0;
+}
+
+.page-transition.page-visible > *:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.page-transition.page-visible > *:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.page-transition.page-visible > *:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.page-transition.page-visible > *:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.page-transition.page-visible > *:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+@keyframes elementFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+

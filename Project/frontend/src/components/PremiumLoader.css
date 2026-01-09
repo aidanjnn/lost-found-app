@@ -1,0 +1,160 @@
+/**
+ * Premium Loader Styles
+ * Professional loading animations
+ */
+
+.loader-fullpage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  z-index: 9999;
+  animation: fadeIn 0.3s ease;
+}
+
+.loader-inline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 20px;
+}
+
+.premium-loader {
+  position: relative;
+  display: inline-block;
+}
+
+/* Sizes */
+.loader-small {
+  width: 32px;
+  height: 32px;
+}
+
+.loader-medium {
+  width: 48px;
+  height: 48px;
+}
+
+.loader-large {
+  width: 64px;
+  height: 64px;
+}
+
+/* Rings */
+.loader-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  animation: loaderRotate 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+}
+
+.loader-small .loader-ring {
+  border-width: 2px;
+}
+
+.loader-large .loader-ring {
+  border-width: 4px;
+}
+
+.loader-ring:nth-child(1) {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-top-color: #FDB515;
+  animation-duration: 1.5s;
+}
+
+.loader-ring:nth-child(2) {
+  top: 10%;
+  left: 10%;
+  right: 10%;
+  bottom: 10%;
+  border-right-color: #C7A842;
+  animation-duration: 1.8s;
+  animation-direction: reverse;
+}
+
+.loader-ring:nth-child(3) {
+  top: 20%;
+  left: 20%;
+  right: 20%;
+  bottom: 20%;
+  border-bottom-color: #E8D066;
+  animation-duration: 2.1s;
+}
+
+/* Core */
+.loader-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 25%;
+  height: 25%;
+  background: radial-gradient(circle, #FDB515, #C7A842);
+  border-radius: 50%;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes loaderRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.3);
+    opacity: 0.7;
+  }
+}
+
+/* Text */
+.loader-text {
+  margin-top: 24px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #2C2A29;
+  animation: textPulse 2s ease-in-out infinite;
+}
+
+.loader-text-inline {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2C2A29;
+}
+
+@keyframes textPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
