@@ -18,7 +18,7 @@ services:
           name: lostfound-db
           property: connectionString
       - key: PYTHON_VERSION
-        value: "3.11"
+        value: "3.11.0"
     healthCheckPath: /api/health
 
 databases:
