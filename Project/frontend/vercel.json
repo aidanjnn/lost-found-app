@@ -7,6 +7,10 @@
         {
             "source": "/auth/:path*",
             "destination": "https://uw-lost-found-api.onrender.com/auth/:path*"
+        },
+        {
+            "source": "/((?!api|auth|assets|favicon).*)",
+            "destination": "/index.html"
         }
     ],
     "headers": [
