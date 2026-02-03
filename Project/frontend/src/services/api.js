@@ -11,9 +11,9 @@
 
 import axios from 'axios'
 
-// Use relative URLs so Vite proxy handles the routing
-// This works whether backend is on same origin or proxied
-const API_BASE_URL = ''
+// Use environment variable for production, empty string for local dev (proxy)
+// In production, VITE_API_URL should be set to the Render backend URL
+const API_BASE_URL = import.meta.env.VITE_API_URL || ''
 
 // Create axios instance with default config
 const api = axios.create({
@@ -122,7 +122,7 @@ export const itemsAPI = {
     const params = new URLSearchParams()
     if (status) params.append('status', status)
     if (category) params.append('category', category)
-    
+
     const response = await api.get(`/api/export/items/csv?${params.toString()}`, {
       responseType: 'blob'
     })
@@ -198,7 +198,7 @@ export const claimsAPI = {
   exportClaimsCSV: async (status = null) => {
     const params = new URLSearchParams()
     if (status) params.append('status', status)
-    
+
     const response = await api.get(`/api/export/claims/csv?${params.toString()}`, {
       responseType: 'blob'
     })

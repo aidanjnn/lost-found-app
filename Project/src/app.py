@@ -29,12 +29,17 @@ import email_utils
 
 app = Flask(__name__)
 
-# Enable CORS for frontend - allow all origins in development
+# Enable CORS for frontend - allow local dev and production domains
 CORS(app, 
-     origins=['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:5173'],
+     origins=[
+         'http://localhost:3000', 
+         'http://127.0.0.1:3000', 
+         'http://localhost:5173',
+         'https://lost-found-app-chi.vercel.app'
+     ],
      supports_credentials=True,
      allow_headers=['Content-Type', 'Authorization'],
-     methods=['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'])
+     methods=['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'])
 
 # Configuration
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', secrets.token_hex(32))
