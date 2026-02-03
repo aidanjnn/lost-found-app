@@ -44,10 +44,17 @@ CORS(app,
 # Configuration
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', secrets.token_hex(32))
 app.config['SESSION_TYPE'] = 'filesystem'
-app.config['SESSION_PERMANENT'] = False
+app.config['SESSION_PERMANENT'] = True
 app.config['SESSION_USE_SIGNER'] = True
 app.config['SESSION_KEY_PREFIX'] = 'lostfound:'
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(hours=24)
+
+# Cross-domain cookie settings for production (Vercel frontend + Render backend)
+# These enable cookies to work across different domains
+is_production = os.getenv('FLASK_ENV') == 'production'
+app.config['SESSION_COOKIE_SECURE'] = is_production  # True in production (HTTPS)
+app.config['SESSION_COOKIE_HTTPONLY'] = True
+app.config['SESSION_COOKIE_SAMESITE'] = 'None' if is_production else 'Lax'
 
 # Initialize Flask-Session
 Session(app)
