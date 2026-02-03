@@ -1,9 +1,7 @@
-# render.yaml - render.com deployment configuration
-# deploy the flask backend as a web service
-
 services:
+  # Flask Backend API
   - type: web
-    name: uw-lost-found-backend
+    name: uw-lost-found-api
     runtime: python
     region: oregon
     plan: free
@@ -14,5 +12,16 @@ services:
         value: production
       - key: SECRET_KEY
         generateValue: true
-      - key: FRONTEND_URL
-        value: https://lost-found-app-chi.vercel.app
+      - key: DATABASE_URL
+        fromDatabase:
+          name: lostfound-db
+          property: connectionString
+      - key: PYTHON_VERSION
+        value: "3.11"
+    healthCheckPath: /api/health
+
+databases:
+  # PostgreSQL Database
+  - name: lostfound-db
+    plan: free
+    region: oregon
