@@ -1,0 +1,18 @@
+# render.yaml - render.com deployment configuration
+# deploy the flask backend as a web service
+
+services:
+  - type: web
+    name: uw-lost-found-backend
+    runtime: python
+    region: oregon
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: cd src && gunicorn app:app --bind 0.0.0.0:$PORT
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: SECRET_KEY
+        generateValue: true
+      - key: FRONTEND_URL
+        value: https://lost-found-app-chi.vercel.app
