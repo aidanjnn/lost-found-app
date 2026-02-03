@@ -2,7 +2,10 @@
 
 a centralized lost-and-found web application for the university of waterloo, designed to help students and staff efficiently manage and recover lost items across campus.
 
-## about
+
+
+## about![UW Lost _ Found _ University of Waterloo](https://github.com/user-attachments/assets/0b479582-dd84-47e9-ad89-a4ed353c2d8d)
+
 
 the uw lost & found app provides a unified platform to streamline the management of lost items at the university of waterloo. it connects the slc turnkey desk, pac, and cif equipment desks with students and visitors, making it easier to report, search, and claim lost belongings.
 
