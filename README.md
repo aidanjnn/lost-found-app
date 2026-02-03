@@ -1,63 +1,168 @@
-# Team Project Repo
+# uw lost & found
 
-In this repo there are two subdirectories:
+a centralized lost-and-found web application for the university of waterloo, designed to help students and staff efficiently manage and recover lost items across campus.
 
-1. To-Do-App
-2. Project
+## about
 
-In the To-Do-App directory you are required to
-1. Create a project charter for a web-access To-Do-App. Place it in `charter.md`
-   in the docs directory.
-2. Create requirements for functions:
-   a. add()
-   b. update()
-   c. delete()
-   d. next()
-   e. today()
-   f. tomorrow()
-   where all changes in the To-Do list are reflected in the database.  Since we
-   are headed toward having a web-accessible version of this To-Do App, you will
-   want to add a userid to the task table.  For now, though, security can be
-   left at the level of "whichever userid is logged into the database server
-   will be the userid for the To-Do list" though this will affect the SQL query
-   necessary to access only that user's tasks:
+the uw lost & found app provides a unified platform to streamline the management of lost items at the university of waterloo. it connects the slc turnkey desk, pac, and cif equipment desks with students and visitors, making it easier to report, search, and claim lost belongings.
 
-	SELECT ... AND userid = '...";
+### key features
+
+- **centralized database**: all lost items from slc, pac, and cif in one searchable platform
+- **user portal**: browse items, filter by category/location/status, and submit claims
+- **staff dashboard**: register new items, manage claims, view analytics, and export data
+- **claim management**: secure claiming process with id verification and audit logging
+- **email notifications**: automatic notifications for item matches and claim updates
+- **responsive design**: full functionality on desktop, tablet, and mobile devices
+
+## tech stack
+
+| layer | technology |
+|-------|------------|
+| **frontend** | react + vite |
+| **backend** | python flask |
+| **database** | sqlite |
+| **styling** | css |
+
+## getting started
+
+### prerequisites
+
+- python 3.8+
+- node.js 18+ and npm
+
+### backend setup
+
+1. navigate to the project directory:
+   ```bash
+   cd Project
+   ```
+
+2. **option a: easy setup (recommended)**
+   ```bash
+   ./start_backend.sh
+   ```
+   this script automatically handles virtual environment setup, dependencies, and port conflicts.
+
+3. **option b: manual setup**
+   ```bash
+   # create virtual environment
+   python3 -m venv venv
    
-3. We wish to work toward a web-accessible version of this application.
-   Initiallly we do this as a "local-only" web setup (the web server will be on
-   your local machine and running as a python application).  To do this, install
-   the python web framework: 
+   # activate virtual environment
+   source venv/bin/activate
+   
+   # install dependencies
+   pip install -r requirements.txt
+   
+   # start the backend server
+   cd src
+   python3 app.py
+   ```
 
-	pip install flask
+4. **expected output:**
+   ```
+   database initialized successfully
+   ✅ default staff account password reset: admin@uwaterloo.ca / admin123
+   * running on http://0.0.0.0:5001
+   ```
 
-4. Using your favourite LLMs, work out how to add in the web functionality.
+> **note:** keep this terminal open. the backend must be running for the app to work.
 
-5. Create an appropriate test plan and testcases for this.
+### frontend setup
 
-When doing this work, you are required to:
+open a **new terminal window**:
 
-0. Create an issue and branch for this work.  For individual functions, tests,
-   *etc.* you should create subbranches from that branch.
-1. Have each team member work on one of the functions, within their own subbranch.
-2. Have a separate team member create the test cases for that functions.
-3. Have a third team member require the merge request, approving or not, as they
-   see fit. If not approved, the dev and tester should fix things until it is
-   approved.
-4. When all functions and tests are complete and merged into your To-Do-App
-   branch, issue a Merge Request and assign it to `d3feng`.
+1. navigate to the frontend directory:
+   ```bash
+   cd Project/frontend
+   ```
 
-In the Project directory, options are as follows:
+2. **option a: easy setup (recommended)**
+   ```bash
+   cd Project
+   ./start_frontend.sh
+   ```
 
-1. Extend the To-Do-App to make it a fully featured web application.  Note that
-   there will be some additional work within the labs in this space, though only
-   with respect to making it a fully web-accessible web application, rather than
-   local only.
-2. Extend the To-Do-App to make it a fully featured Android application (only
-   Teams 1-23)
-3. Propose a project of your own devising.  This must be approved by the SE101
-   instruction team.
+3. **option b: manual setup**
+   ```bash
+   # install dependencies
+   npm install
+   
+   # start the development server
+   npm run dev
+   ```
 
-Discuss in your team your ideas, and within the `Projects/docs` directory write
-a `charter.md` file with the project you are proposing.
+4. **expected output:**
+   ```
+   vite v5.0.8 ready in xxx ms
+   
+   ➜  local:   http://localhost:3000/
+   ```
 
+> **note:** keep this terminal open. both servers must be running simultaneously.
+
+### access the application
+
+1. open your browser and go to **http://localhost:3000**
+2. you should see the uw lost & found homepage
+
+## default accounts
+
+| role | email | password |
+|------|-------|----------|
+| **staff** | `admin@uwaterloo.ca` | `admin123` |
+| **student** | register with any `@uwaterloo.ca` email | |
+
+## troubleshooting
+
+### backend issues
+
+| problem | solution |
+|---------|----------|
+| port 5000 in use | run `lsof -ti:5000 \| xargs kill -9` or disable airplay receiver |
+| python not found | ensure python 3.8+ is installed: `python3 --version` |
+| dependencies fail | try `pip install --upgrade pip` then reinstall |
+
+### frontend issues
+
+| problem | solution |
+|---------|----------|
+| npm install fails | delete `node_modules` and `package-lock.json`, then run `npm install` again |
+| port 3000 in use | either free the port or update `vite.config.js` |
+| node not found | ensure node.js 18+ is installed: `node --version` |
+
+### connection issues
+
+| problem | solution |
+|---------|----------|
+| "cannot connect to server" | ensure backend is running and shows "running on http://0.0.0.0:5001" |
+| login not working | check backend terminal for errors, try restarting the server |
+| registration fails | verify email ends with `@uwaterloo.ca` and password is 6+ characters |
+
+## project structure
+
+```
+Project/
+├── src/                    # backend source code
+│   └── app.py              # flask application entry point
+├── frontend/               # frontend react application
+│   ├── src/                # react source code
+│   ├── public/             # static assets
+│   └── package.json        # frontend dependencies
+├── docs/                   # documentation
+├── tests/                  # test files
+├── start_backend.sh        # backend startup script
+├── start_frontend.sh       # frontend startup script
+└── requirements.txt        # python dependencies
+```
+
+## team
+
+**team members:** ruhani, sheehan, aidan, neng, theni
+
+**course:** se 101 - university of waterloo
+
+## license
+
+this project was developed as part of the se 101 course at the university of waterloo.
