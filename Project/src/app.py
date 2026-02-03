@@ -26,35 +26,31 @@ import csv
 from io import StringIO
 import json
 import email_utils
+from db_config import get_db_connection, init_db as init_database, convert_query, DB_TYPE, DB_PATH
 
 app = Flask(__name__)
 
-# Enable CORS for frontend - allow local dev and production domains
+# Enable CORS for frontend
+# Production: Allow Vercel frontend origin
+# Development: Allow localhost origins
+FRONTEND_URL = os.getenv('FRONTEND_URL', '')
+allowed_origins = ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:5173']
+if FRONTEND_URL:
+    allowed_origins.append(FRONTEND_URL)
+
 CORS(app, 
-     origins=[
-         'http://localhost:3000', 
-         'http://127.0.0.1:3000', 
-         'http://localhost:5173',
-         'https://lost-found-app-chi.vercel.app'
-     ],
+     origins=allowed_origins,
      supports_credentials=True,
      allow_headers=['Content-Type', 'Authorization'],
-     methods=['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'])
+     methods=['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'])
 
 # Configuration
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', secrets.token_hex(32))
 app.config['SESSION_TYPE'] = 'filesystem'
-app.config['SESSION_PERMANENT'] = True
+app.config['SESSION_PERMANENT'] = False
 app.config['SESSION_USE_SIGNER'] = True
 app.config['SESSION_KEY_PREFIX'] = 'lostfound:'
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(hours=24)
-
-# Cross-domain cookie settings for production (Vercel frontend + Render backend)
-# These enable cookies to work across different domains
-is_production = os.getenv('FLASK_ENV') == 'production'
-app.config['SESSION_COOKIE_SECURE'] = is_production  # True in production (HTTPS)
-app.config['SESSION_COOKIE_HTTPONLY'] = True
-app.config['SESSION_COOKIE_SAMESITE'] = 'None' if is_production else 'Lax'
 
 # Initialize Flask-Session
 Session(app)
@@ -1087,9 +1083,14 @@ This is an automated message. Please do not reply to this email.
 # ============================================================================
 
 @app.route('/health', methods=['GET'])
+@app.route('/api/health', methods=['GET'])
 def health_check():
-    """Health check endpoint."""
-    return jsonify({'status': 'healthy', 'service': 'UW Lost-and-Found Auth API'}), 200
+    """Health check endpoint for Render and monitoring."""
+    return jsonify({
+        'status': 'healthy', 
+        'service': 'UW Lost-and-Found API',
+        'database': DB_TYPE
+    }), 200
 
 # ============================================================================
 # Items Endpoints
@@ -3210,11 +3211,11 @@ def index():
     }), 200
 
 if __name__ == '__main__':
-    # Use port 5001 by default to avoid AirPlay Receiver conflict on macOS
-    # Port 5000 is often taken by macOS AirPlay Receiver
-    # To use port 5000, disable AirPlay: System Preferences → General → AirDrop & Handoff
-    port = 5001
+    # In production, gunicorn handles this. This is for local development only.
+    # Use PORT env var if set (for Render), otherwise default to 5001
+    port = int(os.getenv('PORT', 5001))
+    debug = os.getenv('FLASK_ENV', 'development') == 'development'
     print(f"🚀 Starting backend on port {port}")
-    print("💡 If you want to use port 5000, disable AirPlay Receiver in System Preferences")
-    app.run(debug=True, host='0.0.0.0', port=port)
-
+    print(f"💡 Running in {'development' if debug else 'production'} mode")
+    print(f"📦 Database: {DB_TYPE}")
+    app.run(debug=debug, host='0.0.0.0', port=port)

@@ -11,8 +11,8 @@
 
 import axios from 'axios'
 
-// Use environment variable for production, empty string for local dev (proxy)
-// In production, VITE_API_URL should be set to the Render backend URL
+// Use environment variable in production, empty string (relative URL) in development
+// In production, Vercel rewrites handle the routing to Render backend
 const API_BASE_URL = import.meta.env.VITE_API_URL || ''
 
 // Create axios instance with default config
